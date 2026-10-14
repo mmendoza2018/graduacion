@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status: 200 OK · Felicidades, Lurdes</title>
+  <meta name="description" content="Graduada. Sin excepciones. Sin rollback." />
+
+  <!-- Fuentes (CDN Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Confeti (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --muted: #9a9a9a;
+      --accent: #39ff14;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --sans: 'Inter', system-ui, sans-serif;
+      --gothic: 'UnifrakturMaguntia', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { background: var(--bg); color: var(--fg); }
+
+    body {
+      font-family: var(--sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px 64px;
+      line-height: 1.6;
+    }
+
+    /* ---------- Logo { LL } ---------- */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.15em;
+      user-select: none;
+      margin-bottom: 40px;
+      animation: fadeIn 1.2s ease both;
+    }
+    .logo .brace {
+      font-family: var(--mono);
+      font-weight: 400;
+      font-size: clamp(64px, 14vw, 120px);
+      line-height: 1;
+      color: var(--fg);
+    }
+    .logo .ll {
+      font-family: var(--gothic);
+      font-size: clamp(72px, 16vw, 140px);
+      line-height: 1;
+      letter-spacing: -0.08em;
+      color: var(--fg);
+    }
+
+    /* ---------- Mensaje de la tapa ---------- */
+    .status {
+      font-family: var(--mono);
+      text-align: center;
+      margin-bottom: 56px;
+      animation: fadeIn 1.2s ease 0.3s both;
+    }
+    .status .line1 {
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 700;
+      color: var(--accent);
+      min-height: 1.4em;
+    }
+    .status .line1 .cursor {
+      display: inline-block;
+      width: 0.55em;
+      border-bottom: 3px solid var(--accent);
+      margin-left: 4px;
+      animation: blink 1s steps(2) infinite;
+      vertical-align: baseline;
+    }
+    .status .line2 {
+      font-size: clamp(15px, 3vw, 20px);
+      color: var(--fg);
+      margin-top: 10px;
+    }
+    .status .line3 {
+      font-size: clamp(15px, 3vw, 20px);
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ---------- Dedicatoria ---------- */
+    .card {
+      max-width: 640px;
+      width: 100%;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 32px 28px;
+      background: #0a0a0a;
+      animation: fadeIn 1.2s ease 0.6s both;
+    }
+    .card p { margin-bottom: 18px; font-size: 17px; }
+    .card p:last-of-type { margin-bottom: 0; }
+    .card .sign {
+      margin-top: 28px;
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ---------- Botón ---------- */
+    .btn {
+      margin-top: 36px;
+      font-family: var(--mono);
+      font-size: 14px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      animation: fadeIn 1.2s ease 0.9s both;
+    }
+    .btn:hover { background: var(--accent); color: var(--bg); }
+
+    footer {
+      margin-top: 48px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo" aria-label="LL">
+    <span class="brace">{</span>
+    <span class="ll">LL</span>
+    <span class="brace">}</span>
+  </div>
+
+  <!-- Mensaje de la tapa -->
+  <section class="status">
+    <div class="line1"><span id="typed"></span><span class="cursor"></span></div>
+    <div class="line2">Graduada. Sin excepciones. Sin rollback.</div>
+    <div class="line3">Felicidades, Lurdes.</div>
+  </section>
+
+  <!-- Dedicatoria -->
+  <article class="card">
+    <p>¿Otra vez tú acá? Sí, otra vez yo… jajaja :v</p>
+
+    <p>Luu, me da mucho gusto que estés terminando esta etapa con tu carrera. ¿Quién iba a pensar que el burro de Shrek se graduaría? 🤣 No, mentira. Tú eres una chica que sorprendió desde el inicio con todo el empeño y el foco que le pones a algo cuando te lo propones. Casi todo lo que te propones lo terminas cumpliendo… 😏 …aunque ciertas cosas no 😅.</p>
+
+    <p>Pero bueno, siempre supe que lo lograrías, porque sé de lo que eres capaz y de todo lo que puedes alcanzar cuando te lo propones de verdad. Me da mucho gusto que ya lo hayas hecho y que por fin seas libre (al menos de la U). Siempre te dije que afuera es peor 💀 jajaja.</p>
+
+    <p>Lo conseguiste. Eres libre. Y ahora sí vas a tener plata para mi regalo y para todas las salidas pendientes que me debes… 😉😉 jajaja.</p>
+
+    <p>Sin más que decir: te quiero mucho, a pesar de lo loca que a veces eres 🤪❤️</p>
+
+    <div class="sign">ATTE: El Innombrable 🙈</div>
+  </article>
+
+  <button class="btn" id="deploy">$ ./deploy --celebrar</button>
+
+  <footer>// v1.0 · build 2026</footer>
+
+  <script>
+    // Efecto de tipeo en la primera línea
+    const text = 'Status: 200 OK';
+    const el = document.getElementById('typed');
+    let i = 0;
+    (function type() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i++);
+        setTimeout(type, 70);
+      }
+    })();
+
+    // Confeti al presionar el botón
+    document.getElementById('deploy').addEventListener('click', () => {
+      const end = Date.now() + 1500;
+      (function frame() {
+        confetti({ particleCount: 4, angle: 60,  spread: 60, origin: { x: 0 }, colors: ['#39ff14', '#ffffff'] });
+        confetti({ particleCount: 4, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#39ff14', '#ffffff'] });
+        if (Date.now() < end) requestAnimationFrame(frame);
+      })();
+    });
+  </script>
+</body>
+</html>
